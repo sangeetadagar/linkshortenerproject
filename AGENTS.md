@@ -21,7 +21,6 @@ These instructions apply to all work in this repository. Treat them as the local
 
 ## Before Changing Code
 
-- **MANDATORY: Before generating, editing, or proposing ANY code, ALWAYS read every relevant individual instruction file in the `/docs` directory first.** Determine which document(s) apply to the task, read the complete file(s), and follow their requirements before writing code. Do not skip this step, even for small changes, bug fixes, refactors, configuration work, or UI updates.
 - Read the target file and its nearest caller or sibling implementation before editing.
 - For Next.js behavior, routing, server/client boundaries, or framework configuration, read the matching guide under `node_modules/next/dist/docs/` first. This project may use APIs that differ from older Next.js examples.
 - Check the existing implementation before introducing a new helper, component, dependency, or styling pattern.
@@ -47,7 +46,6 @@ These instructions apply to all work in this repository. Treat them as the local
 
 ## Authentication and Authorization
 
-- Read [`docs/auth.md`](docs/auth.md) before changing Clerk configuration, authentication flows, protected routes, or user-owned data access.
 - Clerk is the source of truth for authentication. Use the existing `@clerk/nextjs` provider, components, and server utilities rather than creating a parallel auth flow.
 - Treat authentication and authorization as separate checks: a signed-in user is not automatically authorized to access another user's links.
 - Enforce ownership on the server for every read, update, and delete involving user data. Do not trust user IDs, redirect parameters, or hidden form fields supplied by the client.
@@ -65,7 +63,6 @@ These instructions apply to all work in this repository. Treat them as the local
 
 ## UI and Accessibility
 
-- Read [`docs/ui.md`](docs/ui.md) before changing or generating any UI.
 - Preserve the existing Shortly visual language: restrained zinc neutrals, blue accent actions, Geist fonts, compact rounded controls, and responsive layouts.
 - Use shadcn/ui components for every UI element. Use the existing `components/ui` primitives and `lucide-react` icons; do not create custom UI components or hand-roll replacements.
 - When a needed primitive is missing, add it through the configured shadcn workflow and preserve the settings in `components.json`.
@@ -90,5 +87,3 @@ These instructions apply to all work in this repository. Treat them as the local
 - Do not install dependencies when the existing stack can solve the problem. If a new dependency is necessary, explain its purpose and update the lockfile through the package manager.
 - Do not commit changes, create branches, or reset the worktree unless explicitly requested.
 - Keep project-specific agent guidance in this file.
-
-For detailed guidelines on specific topics, refer to the modular documentation in the `docs/` directory. The mandatory documentation gate above applies before generating any code.
