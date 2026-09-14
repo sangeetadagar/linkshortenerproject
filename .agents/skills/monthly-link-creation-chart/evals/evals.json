@@ -1,0 +1,38 @@
+{
+  "skill_name": "monthly-link-creation-chart",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Use the DATABASE_URL in this project's .env to query links created over the past 12 months and export a PNG bar chart with one bar per month, including months with zero links.",
+      "expected_output": "A PNG bar chart is created from the links table, with exactly 12 chronological month labels, monthly link totals on the y-axis, and no database credentials printed.",
+      "files": [],
+      "expectations": [
+        "The workflow reads DATABASE_URL from .env without exposing its value.",
+        "The query uses links.created_at and returns all 12 calendar months, including zero-count months.",
+        "The final artifact is a PNG bar chart with month labels and a link-count y-axis."
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Make a monthly link creation report for the last year from the app database. There may be no links in some months, but the chart must still show those months at zero and be saved as a PNG.",
+      "expected_output": "A readable 12-month PNG bar chart with explicit zero-height bars for months without links, generated through a read-only database query.",
+      "files": [],
+      "expectations": [
+        "The implementation uses a calendar-month series or equivalent zero-fill logic rather than dropping empty months.",
+        "The database operation is read-only and does not alter application data.",
+        "The image is saved in PNG format with unclipped labels."
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Query the links table using the project's .env and create a 12-month monthly link-count bar chart at reports/link-volume.png. Keep the output chronological and include the current month.",
+      "expected_output": "The requested reports/link-volume.png file is generated with 12 chronological bars covering the current month and the previous 11 months.",
+      "files": [],
+      "expectations": [
+        "The requested output path is honored.",
+        "The time window includes the current calendar month and exactly 11 preceding months.",
+        "The result includes readable month/year x-axis labels and integer link counts."
+      ]
+    }
+  ]
+}
